@@ -1,21 +1,14 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from 'react-router-dom';
-import { PaginaInicial } from './pages';
-// import logo from './trivia.png';
+import logo from './trivia.png';
 import './App.css';
-
+// Só pra commitar
 export default function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={PaginaInicial} />
-      </Switch>
-    </BrowserRouter>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>SUA VEZ</p>
+      </header>
+    </div>
   );
 }
-
-export default App;
