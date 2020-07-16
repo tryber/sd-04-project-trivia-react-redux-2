@@ -1,21 +1,20 @@
-import React from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-} from 'react-router-dom';
-import { PaginaInicial } from './pages';
-// import logo from './trivia.png';
-import './App.css';
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={PaginaInicial} />
-      </Switch>
-    </BrowserRouter>
-  );
+import React, { Component } from 'react';
+import Input from '../componentes';
+
+class PaginaInicial extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div data-testid="">
+        <span>Pagina Inicial</span>
+        <Input />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default PaginaInicial;
