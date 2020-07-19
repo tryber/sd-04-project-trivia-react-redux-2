@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import fetchToken from '../redux/actions/apiActions';
 import Input from '../componentes/Inicial/Input';
 import Botao from '../componentes/Botao';
 
@@ -11,6 +14,12 @@ class PaginaInicial extends Component {
       email: '',
     };
     this.changeHandler = this.changeHandler.bind(this);
+    this.getData = this.getData.bind(this);
+  }
+
+  getData() {
+    const { getToken } = this.props;
+    getToken();
   }
 
   changeHandler({ name, value }) {
@@ -25,7 +34,12 @@ class PaginaInicial extends Component {
         <Input name="nome" onChange={this.changeHandler} dataTestId="input-player-name" />
         <Input name="email" onChange={this.changeHandler} dataTestId="input-gravatar-email" />
         <Link to="/game">
-          <Botao texto="Jogar" dataTestId="btn-play" condition={!nome || !email} />
+          <Botao
+            texto="Jogar"
+            dataTestId="btn-play"
+            onClick={this.getData}
+            condition={!nome || !email}
+          />
         </Link>
         <Link to="/settings">
           <Botao texto="Configuracoes" dataTestId="btn-settings" />
@@ -35,4 +49,12 @@ class PaginaInicial extends Component {
   }
 }
 
-export default PaginaInicial;
+const mapDispatchToProps = (dispatch) => ({
+  getToken: () => dispatch(fetchToken()),
+});
+
+PaginaInicial.propTypes = {
+  getToken: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(PaginaInicial);
