@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Botao = ({ texto, onClick, dataTestId, condition }) => {
-  return (
-    <div>
-      <button
-        data-testid={dataTestId}
-        disabled={condition}
-        onClick={onClick ? () => onClick() : null}
-        type="button"
-      >
-        {texto}
-      </button>
-    </div>
-  );
-};
+const Botao = ({ texto, onClick, dataTestId, condition }) => (
+  <div>
+    <button
+      data-testid={dataTestId}
+      disabled={condition}
+      onClick={onClick ? () => onClick() : null}
+      type="button"
+    >
+      {texto}
+    </button>
+  </div>
+);
 
 Botao.propTypes = {
   texto: PropTypes.string.isRequired,
