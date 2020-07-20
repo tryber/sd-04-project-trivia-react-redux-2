@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 const Perfil = ({ nome, imagem, pontos }) => (
   <div>
     <span>${nome}</span>
-    <img src="" />
+    <img src=""/>
     <span>${pontos}</span>
   </div>
 );
 
 Input.propTypes = {
   nome: PropTypes.string.isRequired,
-  imagem: PropTypes.shape.isRequired,
+  imagem: PropTypes.string.isRequired,
   pontos: PropTypes.number.isRequired,
 };
 
