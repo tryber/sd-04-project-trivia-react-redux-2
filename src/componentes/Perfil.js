@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Perfil = ({ nome, imagem, pontos }) => (
   <div>
     <span>${nome}</span>
-    <img src={imagem} alt="avatar do jogador"/>
+    <img src={imagem} alt="avatar do jogador" />
     <span>${pontos}</span>
   </div>
 );
