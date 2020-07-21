@@ -33,7 +33,9 @@ function fetchToken() {
 function fetchTrivia() {
   return (dispatch) => {
     dispatch(requestTrivia());
-    return getTrivia(JSON.parse(localStorage.token)).then((data) => dispatch(receiveTrivia(data.results)));
+    return getTrivia(JSON.parse(localStorage.token)).then((data) =>
+      dispatch(receiveTrivia(data.results)),
+    );
   };
 }
 
