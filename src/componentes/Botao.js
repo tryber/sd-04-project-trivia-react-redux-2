@@ -18,7 +18,7 @@ Botao.propTypes = {
   texto: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   dataTestId: PropTypes.string.isRequired,
-  condition: PropTypes.string,
+  condition: PropTypes.bool,
 };
 
 Botao.defaultProps = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import fetchToken from '../redux/actions/apiActions';
+import { fetchToken, fetchTrivia } from '../redux/actions/apiActions';
 import Input from '../componentes/Inicial/Input';
 import Botao from '../componentes/Botao';
 
@@ -18,8 +18,9 @@ class PaginaInicial extends Component {
   }
 
   getData() {
-    const { getToken } = this.props;
+    const { getToken, getTrivia } = this.props;
     getToken();
+    getTrivia();
   }
 
   changeHandler({ name, value }) {
@@ -51,10 +52,12 @@ class PaginaInicial extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   getToken: () => dispatch(fetchToken()),
+  getTrivia: () => dispatch(fetchTrivia()),
 });
 
 PaginaInicial.propTypes = {
   getToken: PropTypes.func.isRequired,
+  getTrivia: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(PaginaInicial);
