@@ -39,6 +39,19 @@ class PaginaJogo extends Component {
   }
 }
 
+PaginaJogo.propTypes = {
+  questions: PropTypes.arrayOf(
+    PropTypes.shape({
+      category: PropTypes.string,
+      type: PropTypes.string,
+      difficulty: PropTypes.string,
+      question: PropTypes.string,
+      correct_answer: PropTypes.string,
+      incorrect_answer: PropTypes.arrayOf(PropTypes.string),
+    }),
+  ).isRequired,
+};
+
 const mapStateToProps = (state) => ({
   questions: state.dataReducer.trivia,
 });

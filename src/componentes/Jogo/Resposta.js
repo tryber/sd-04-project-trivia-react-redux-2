@@ -18,7 +18,7 @@ const Respostas = (props) => {
 };
 
 Respostas.propTypes = {
-  correctAnswer: PropTypes.arrayOf(PropTypes.string).isRequired,
+  correctAnswer: PropTypes.string.isRequired,
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
