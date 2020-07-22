@@ -9,7 +9,7 @@ const Respostas = (props) => {
         {correctAnswer}
       </button>
       {incorrectAnswers.map((incorrectAnswer, index) => (
-        <button type="button" key={`wrong-answer-${index}`} data-testid={`wrong-answer-${index}`}>
+        <button type="button" key={incorrectAnswer} data-testid={`wrong-answer-${index}`}>
           {incorrectAnswer}
         </button>
       ))}

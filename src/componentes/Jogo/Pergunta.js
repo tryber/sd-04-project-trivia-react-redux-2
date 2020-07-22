@@ -17,11 +17,7 @@ const Pergunta = (props) => {
 Pergunta.propTypes = {
   currQuestion: PropTypes.shape({
     category: PropTypes.string,
-    type: PropTypes.string,
-    difficulty: PropTypes.string,
     question: PropTypes.string,
-    correct_answer: PropTypes.string,
-    incorrect_answer: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
