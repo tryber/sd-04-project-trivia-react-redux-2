@@ -4,7 +4,7 @@ import {
   REQUEST_TRIVIA,
   RECEIVE_TRIVIA,
 } from '../actions/apiActions';
-import saveToken from '../../util/localStorage';
+import saveSingleInfo from '../../util/localStorage';
 
 const INITIAL_STATE = {
   isFetching: false,
@@ -20,7 +20,7 @@ const dataReducer = (state = INITIAL_STATE, action) => {
         isFetching: true,
       };
     case RECEIVE_TOKEN:
-      saveToken('token', action.token);
+      saveSingleInfo('token', action.token);
       return {
         ...state,
         token: action.token,
