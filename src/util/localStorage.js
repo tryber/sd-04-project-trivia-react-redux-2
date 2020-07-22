@@ -1,4 +1,4 @@
-const saveToken = (index, value) => {
+const saveSingleInfo = (index, value) => {
   // const jsonIndex = JSON.stringify(index)
   if (!localStorage[index]) localStorage[index] = JSON.stringify([]);
   // const currInfo = JSON.parse(localStorage[index])
@@ -6,4 +6,4 @@ const saveToken = (index, value) => {
   localStorage[index] = JSON.stringify(newInfo);
 };
 
-export default saveToken;
+export default saveSingleInfo;
