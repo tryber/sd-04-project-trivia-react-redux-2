@@ -59,6 +59,8 @@ PaginaJogo.propTypes = {
       incorrect_answer: PropTypes.arrayOf(PropTypes.string),
     }),
   ).isRequired,
+  getToken: PropTypes.func.isRequired,
+  getTrivia: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
