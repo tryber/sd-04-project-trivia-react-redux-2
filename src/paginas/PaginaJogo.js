@@ -5,6 +5,7 @@ import Perfil from '../componentes/Perfil';
 import Botao from '../componentes/Botao';
 import Pergunta from '../componentes/Jogo/Pergunta';
 import Respostas from '../componentes/Jogo/Resposta';
+import { fetchToken, fetchTrivia } from '../redux/actions/apiActions';
 
 class PaginaJogo extends Component {
   constructor(props) {
@@ -16,6 +17,12 @@ class PaginaJogo extends Component {
     this.incrementQuestionIndex = this.incrementQuestionIndex.bind(this);
   }
 
+  componentDidMount() {
+    const { getToken, getTrivia } = this.props;
+    getToken();
+    getTrivia();
+  }
+
   incrementQuestionIndex() {
     const { index } = this.state;
     this.setState({ index: index + 1 });
@@ -23,7 +30,7 @@ class PaginaJogo extends Component {
 
   render() {
     const { questions } = this.props;
-    const { index } = this.state;
+    const { index, click } = this.state;
     if (!questions[index]) return <div>Loading...</div>;
     return (
       <div>
@@ -32,6 +39,8 @@ class PaginaJogo extends Component {
         <Respostas
           correctAnswer={questions[index].correct_answer}
           incorrectAnswers={questions[index].incorrect_answers}
+          condition={click}
+          aoClicar={this.desabilitaBotoes}
         />
         <Botao texto="PRÓXIMA" onClick={this.incrementQuestionIndex} dataTestId="btn-next" />
       </div>
@@ -56,4 +65,9 @@ const mapStateToProps = (state) => ({
   questions: state.dataReducer.trivia,
 });
 
-export default connect(mapStateToProps)(PaginaJogo);
+const mapDispatchToProps = (dispatch) => ({
+  getToken: () => dispatch(fetchToken()),
+  getTrivia: () => dispatch(fetchTrivia()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaginaJogo);

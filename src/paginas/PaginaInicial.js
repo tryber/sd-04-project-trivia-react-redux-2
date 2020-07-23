@@ -21,8 +21,8 @@ class PaginaInicial extends Component {
   getData() {
     const { getToken, getTrivia, saveData } = this.props;
     const { nome, email } = this.state;
-    getToken();
-    getTrivia();
+    // getToken();
+    // getTrivia();
     saveData(nome, email);
   }
 

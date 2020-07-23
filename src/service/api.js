@@ -6,8 +6,8 @@ const getToken = () =>
     res.json().then((json) => (res.ok ? Promise.resolve(json) : Promise.reject(json))),
   );
 
-const getTrivia = (token) =>
-  fetch(`${TRIVIA_URL}${token}`).then((res) =>
+const getTrivia = () =>
+  fetch(`${TRIVIA_URL}`).then((res) =>
     res.json().then((json) => (res.ok ? Promise.resolve(json) : Promise.reject(json))),
   );
 

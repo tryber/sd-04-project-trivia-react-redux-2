@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 const Perfil = ({ nome, imagem, pontos }) => (
   <div>
-    <img src={`https://www.gravatar.com/avatar/${imagem}`} alt="avatar do jogador" />
-    <span>{nome}</span>
-    <span>{pontos}</span>
+    <img src={`https://www.gravatar.com/avatar/${imagem}`} alt="avatar do jogador" data-testid="header-profile-picture" />
+    <span data-testid="header-player-name">{nome}</span>
+    <span data-testid="header-score">{pontos}</span>
   </div>
 );
 
