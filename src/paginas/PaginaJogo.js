@@ -13,8 +13,10 @@ class PaginaJogo extends Component {
     this.state = {
       timer: 30,
       index: 0,
+      click: false,
     };
     this.incrementQuestionIndex = this.incrementQuestionIndex.bind(this);
+    this.clickouNoBotao = this.clickouNoBotao.bind(this);
   }
 
   componentDidMount() {
@@ -23,9 +25,13 @@ class PaginaJogo extends Component {
     getTrivia();
   }
 
+  clickouNoBotao() {
+    this.setState({ click: true });
+  }
+
   incrementQuestionIndex() {
     const { index } = this.state;
-    this.setState({ index: index + 1 });
+    this.setState({ index: index + 1, click: false });
   }
 
   render() {
@@ -40,9 +46,14 @@ class PaginaJogo extends Component {
           correctAnswer={questions[index].correct_answer}
           incorrectAnswers={questions[index].incorrect_answers}
           condition={click}
-          aoClicar={this.desabilitaBotoes}
+          onClick={this.clickouNoBotao}
         />
-        <Botao texto="PRÓXIMA" onClick={this.incrementQuestionIndex} dataTestId="btn-next" />
+        <Botao
+          show={click}
+          texto="PRÓXIMA"
+          onClick={this.incrementQuestionIndex}
+          dataTestId="btn-next"
+        />
       </div>
     );
   }

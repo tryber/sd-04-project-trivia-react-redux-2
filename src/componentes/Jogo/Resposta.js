@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Respostas = (props) => {
-  const { correctAnswer, incorrectAnswers } = props;
+  const { correctAnswer, incorrectAnswers, condition, onClick } = props;
+  console.log(condition);
   return (
     <div>
       <button
         type="button"
         data-testid="correct-answer"
+        style={condition ? { border: '3px solid rgb(6, 240, 15)' } : null}
+        onClick={() => onClick()}
+        disabled={condition}
       >
         {correctAnswer}
       </button>
@@ -16,6 +20,9 @@ const Respostas = (props) => {
           type="button"
           key={incorrectAnswer}
           data-testid={`wrong-answer-${index}`}
+          style={condition ? { border: '3px solid rgb(255, 0, 0)' } : null}
+          onClick={() => onClick()}
+          disabled={condition}
         >
           {incorrectAnswer}
         </button>
@@ -27,6 +34,8 @@ const Respostas = (props) => {
 Respostas.propTypes = {
   correctAnswer: PropTypes.string.isRequired,
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  condition: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Respostas;
