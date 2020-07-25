@@ -26,6 +26,7 @@ const Botao = ({ texto, onClick, dataTestId, condition, show = true, renderLink 
   }
   return null;
 };
+
 Botao.propTypes = {
   texto: PropTypes.string.isRequired,
   onClick: PropTypes.func,
