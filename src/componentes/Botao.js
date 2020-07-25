@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Botao = ({ texto, onClick, dataTestId, condition, show = true }) => {
-  if (show) {
+const Botao = ({ texto, onClick, dataTestId, condition, show = true, renderLink = false }) => {
+  if (show && !renderLink) {
     return (
       <div>
         <button
@@ -16,6 +17,13 @@ const Botao = ({ texto, onClick, dataTestId, condition, show = true }) => {
       </div>
     );
   }
+  if (show && renderLink) {
+    return (
+      <Link data-testid="btn-next" to="/feedback">
+        PRÓXIMA
+      </Link>
+    );
+  }
   return null;
 };
 Botao.propTypes = {
@@ -24,12 +32,14 @@ Botao.propTypes = {
   dataTestId: PropTypes.string.isRequired,
   condition: PropTypes.bool,
   show: PropTypes.bool,
+  renderLink: PropTypes.bool,
 };
 
 Botao.defaultProps = {
   onClick: null,
   condition: false,
   show: true,
+  renderLink: false,
 };
 
 export default Botao;

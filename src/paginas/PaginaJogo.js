@@ -14,6 +14,7 @@ class PaginaJogo extends Component {
       timer: 30,
       index: 0,
       click: false,
+      renderLink: false,
     };
     this.incrementQuestionIndex = this.incrementQuestionIndex.bind(this);
     this.clickouNoBotao = this.clickouNoBotao.bind(this);
@@ -32,11 +33,12 @@ class PaginaJogo extends Component {
   incrementQuestionIndex() {
     const { index } = this.state;
     this.setState({ index: index + 1, click: false });
+    if (index === 3) this.setState({ renderLink: true });
   }
 
   render() {
     const { questions } = this.props;
-    const { index, click } = this.state;
+    const { index, click, renderLink } = this.state;
     if (!questions[index]) return <div>Loading...</div>;
     return (
       <div>
@@ -53,6 +55,7 @@ class PaginaJogo extends Component {
           texto="PRÓXIMA"
           onClick={this.incrementQuestionIndex}
           dataTestId="btn-next"
+          renderLink={renderLink}
         />
       </div>
     );
