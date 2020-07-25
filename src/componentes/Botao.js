@@ -3,25 +3,25 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Botao = ({ texto, onClick, dataTestId, condition, show = true, renderLink = false }) => {
-  if (show && !renderLink) {
+  if (show) {
     return (
       <div>
-        <button
-          data-testid={dataTestId}
-          disabled={condition}
-          onClick={onClick ? () => onClick() : null}
-          type="button"
-        >
-          {texto}
-        </button>
+        {!renderLink && (
+          <button
+            data-testid={dataTestId}
+            disabled={condition}
+            onClick={onClick ? () => onClick() : null}
+            type="button"
+          >
+            {texto}
+          </button>
+        )}
+        {renderLink && (
+          <Link data-testid="btn-next" to="/feedback">
+            PRÓXIMA
+          </Link>
+        )}
       </div>
-    );
-  }
-  if (show && renderLink) {
-    return (
-      <Link data-testid="btn-next" to="/feedback">
-        PRÓXIMA
-      </Link>
     );
   }
   return null;
