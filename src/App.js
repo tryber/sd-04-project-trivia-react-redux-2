@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PaginaInicial from './paginas/PaginaInicial';
 import PaginaJogo from './paginas/PaginaJogo';
 import PaginaConfiguracoes from './paginas/PaginaConfiguracoes';
-import './App.css';
 import PaginaFeedback from './paginas/PaginaFeedback';
+import PaginaRanking from './paginas/PaginaRanking';
+import './App.css';
 
 export default function App() {
   return (
@@ -13,7 +14,7 @@ export default function App() {
         <Route exact path="/" component={PaginaInicial} />
         <Route exact path="/game" component={PaginaJogo} />
         <Route exact path="/feedback" component={PaginaFeedback} />
-        <Route exact path="/ranking" component={PaginaRanking} />
+        <Route exact path="/ranking" component={PaginaRanking}/>
         <Route exact path="/settings" component={PaginaConfiguracoes} />
         <Route path="" />
       </Switch>
