@@ -35,6 +35,7 @@ Respostas.propTypes = {
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string).isRequired,
   condition: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  difficulty: PropTypes.string.isRequired,
 };
 
 export default Respostas;
