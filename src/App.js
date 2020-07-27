@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PaginaInicial from './paginas/PaginaInicial';
 import PaginaJogo from './paginas/PaginaJogo';
 import PaginaConfiguracoes from './paginas/PaginaConfiguracoes';
-import './App.css';
 import PaginaFeedback from './paginas/PaginaFeedback';
+import PaginaRanking from './paginas/PaginaRanking';
+import './App.css';
 
 export default function App() {
   return (
