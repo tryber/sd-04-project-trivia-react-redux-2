@@ -52,7 +52,7 @@ class PaginaJogo extends Component {
 
   incrementQuestionIndex() {
     const { index } = this.state;
-    this.setState({ index: index + 1, click: false, timer: 7 });
+    this.setState({ index: index + 1, click: false, timer: 30 });
     if (index === 3) this.setState({ renderLink: true });
     this.playTimer();
   }
