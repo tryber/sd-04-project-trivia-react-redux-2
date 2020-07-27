@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import savePlayerData from '../redux/actions/userAction';
+import { savePlayerData } from '../redux/actions/userAction';
 import Input from '../componentes/Inicial/Input';
 import Botao from '../componentes/Botao';
 

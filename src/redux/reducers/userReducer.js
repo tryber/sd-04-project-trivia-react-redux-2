@@ -1,9 +1,9 @@
-import { PLAYER_DATA } from '../actions/userAction';
-import saveSingleInfo from '../../util/localStorage';
+import { PLAYER_DATA, CORRECT_ANSWER } from '../actions/userAction';
+import addInfo from '../../util/localStorage';
 
 const INITIAL_STATE = {
   name: '',
-  assertions: '',
+  assertions: 0,
   score: 0,
   gravatarEmail: '',
 };
@@ -11,11 +11,24 @@ const INITIAL_STATE = {
 const playerReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case PLAYER_DATA:
-      saveSingleInfo('state', { player: { name: action.name, gravatarEmail: action.email } });
+      addInfo('state', { player: { ...state, name: action.name, gravatarEmail: action.email } });
       return {
         ...state,
         name: action.name,
         gravatarEmail: action.email,
+      };
+    case CORRECT_ANSWER:
+      addInfo('state', {
+        player: {
+          ...state,
+          score: state.score + action.score,
+          assertions: state.assertions + 1,
+        },
+      });
+      return {
+        ...state,
+        score: state.score + action.score,
+        assertions: state.assertions + 1,
       };
     default:
       return state;
