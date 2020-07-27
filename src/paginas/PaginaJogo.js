@@ -49,9 +49,10 @@ class PaginaJogo extends Component {
   clickouNoBotao(answer, difficulty) {
     const { addScore } = this.props;
     this.setState({ click: true });
-    if (answer === true && difficulty === 'easy') addScore(10 + 2 * 1);
-    if (answer === true && difficulty === 'medium') addScore(10 + 2 * 2);
-    if (answer === true && difficulty === 'hard') addScore(10 + 2 * 3);
+    const { timer } = this.state;
+    if (answer === true && difficulty === 'easy') addScore(10 + (timer * 1));
+    if (answer === true && difficulty === 'medium') addScore(10 + (timer * 2));
+    if (answer === true && difficulty === 'hard') addScore(10 + (timer * 3));
   }
 
   incrementQuestionIndex() {
