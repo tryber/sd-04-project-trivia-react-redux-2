@@ -9,7 +9,7 @@ const PaginaFeedback = () => (
     <Link to="/">
       <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
     </Link>
-    <Link to="/">
+    <Link to="/ranking">
       <Botao texto="Ver Ranking" dataTestId="ranking-title" />
     </Link>
   </div>
