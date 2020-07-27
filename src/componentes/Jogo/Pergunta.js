@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const Pergunta = (props) => {
   if (!props.currQuestion) return <div>Loading...</div>;
   const { currQuestion } = props;
-  console.log(currQuestion);
   const { category, question } = currQuestion;
   return (
     <div>

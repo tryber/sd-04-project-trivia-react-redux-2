@@ -1,9 +1,7 @@
-const saveSingleInfo = (index, value) => {
-  // const jsonIndex = JSON.stringify(index)
+const addInfo = (index, value) => {
   if (!localStorage[index]) localStorage[index] = JSON.stringify([]);
-  // const currInfo = JSON.parse(localStorage[index])
   const newInfo = value;
   localStorage[index] = JSON.stringify(newInfo);
 };
 
-export default saveSingleInfo;
+export default addInfo;

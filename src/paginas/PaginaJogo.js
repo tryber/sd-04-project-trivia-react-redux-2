@@ -6,6 +6,7 @@ import Botao from '../componentes/Botao';
 import Pergunta from '../componentes/Jogo/Pergunta';
 import Respostas from '../componentes/Jogo/Resposta';
 import { fetchToken, fetchTrivia } from '../redux/actions/apiActions';
+import { correctAnswer } from '../redux/actions/userAction';
 
 class PaginaJogo extends Component {
   constructor(props) {
@@ -18,27 +19,47 @@ class PaginaJogo extends Component {
     };
     this.incrementQuestionIndex = this.incrementQuestionIndex.bind(this);
     this.clickouNoBotao = this.clickouNoBotao.bind(this);
+    this.playTimer = this.playTimer.bind(this);
   }
 
   componentDidMount() {
     const { getToken, getTrivia } = this.props;
     getToken();
     getTrivia();
+    this.playTimer();
   }
 
-  clickouNoBotao() {
+  componentDidUpdate() {
+    const { timer } = this.state;
+    if (timer === 0) clearInterval(this.myInterval);
+  }
+
+  playTimer() {
+    this.myInterval = setInterval(() => {
+      this.setState(({ timer }) => ({
+        timer: timer - 1,
+      }));
+    }, 1000);
+  }
+
+  clickouNoBotao(answer, difficulty) {
+    const { addScore } = this.props;
     this.setState({ click: true });
+    if (answer === true && difficulty === 'easy') addScore(10 + 2 * 1);
+    if (answer === true && difficulty === 'medium') addScore(10 + 2 * 2);
+    if (answer === true && difficulty === 'hard') addScore(10 + 2 * 3);
   }
 
   incrementQuestionIndex() {
     const { index } = this.state;
-    this.setState({ index: index + 1, click: false });
+    this.setState({ index: index + 1, click: false, timer: 7 });
     if (index === 3) this.setState({ renderLink: true });
+    this.playTimer();
   }
 
   render() {
     const { questions } = this.props;
-    const { index, click, renderLink } = this.state;
+    const { index, click, renderLink, timer } = this.state;
     if (!questions[index]) return <div>Loading...</div>;
     return (
       <div>
@@ -47,8 +68,9 @@ class PaginaJogo extends Component {
         <Respostas
           correctAnswer={questions[index].correct_answer}
           incorrectAnswers={questions[index].incorrect_answers}
-          condition={click}
+          condition={click || !(timer !== 0)}
           onClick={this.clickouNoBotao}
+          difficulty={questions[index].difficulty}
         />
         <Botao
           show={click}
@@ -57,6 +79,7 @@ class PaginaJogo extends Component {
           dataTestId="btn-next"
           renderLink={renderLink}
         />
+        <div>Tempo: {timer}</div>
       </div>
     );
   }
@@ -84,6 +107,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getToken: () => dispatch(fetchToken()),
   getTrivia: () => dispatch(fetchTrivia()),
+  addScore: (score) => dispatch(correctAnswer(score)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaginaJogo);

@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Respostas = (props) => {
-  const { correctAnswer, incorrectAnswers, condition, onClick } = props;
-  console.log(condition);
+  const { correctAnswer, incorrectAnswers, condition, onClick, difficulty } = props;
   return (
     <div>
       <button
         type="button"
         data-testid="correct-answer"
         style={condition ? { border: '3px solid rgb(6, 240, 15)' } : null}
-        onClick={() => onClick()}
+        onClick={() => onClick(true, difficulty)}
         disabled={condition}
       >
         {correctAnswer}
@@ -21,7 +20,7 @@ const Respostas = (props) => {
           key={incorrectAnswer}
           data-testid={`wrong-answer-${index}`}
           style={condition ? { border: '3px solid rgb(255, 0, 0)' } : null}
-          onClick={() => onClick()}
+          onClick={() => onClick(false)}
           disabled={condition}
         >
           {incorrectAnswer}
