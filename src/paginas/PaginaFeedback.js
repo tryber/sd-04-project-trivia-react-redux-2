@@ -4,8 +4,13 @@ import store from '../redux/store';
 import Perfil from '../componentes/Perfil';
 import Botao from '../componentes/Botao';
 
+const userData = store.getState();
+const getPontos = () => {
+  let pontos = userData.userReducer.score;
+  return pontos;
+}
+
 const definirMsg = () => {
-  const userData = store.getState();
   let msg = userData.userReducer.assertions >= 3 ? "Mandou bem!" : "Podia ser melhor...";
   return msg;
 }
@@ -14,6 +19,7 @@ const PaginaFeedback = () => (
   <div>
     <Perfil />
     <div>{definirMsg()}</div>
+    <div>{getPontos()}</div>
     <Link to="/">
       <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
     </Link>
