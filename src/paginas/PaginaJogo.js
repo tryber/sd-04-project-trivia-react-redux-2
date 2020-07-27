@@ -34,6 +34,10 @@ class PaginaJogo extends Component {
     if (timer === 0) clearInterval(this.myInterval);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.myInterval);
+  }
+
   playTimer() {
     this.myInterval = setInterval(() => {
       this.setState(({ timer }) => ({
@@ -45,12 +49,13 @@ class PaginaJogo extends Component {
   clickouNoBotao(answer, difficulty) {
     const { addScore } = this.props;
     this.setState({ click: true });
-    if (answer === true && difficulty === 'easy') addScore(10 + (2 * 1));
-    if (answer === true && difficulty === 'medium') addScore(10 + (2 * 2));
-    if (answer === true && difficulty === 'hard') addScore(10 + (2 * 3));
+    if (answer === true && difficulty === 'easy') addScore(10 + 2 * 1);
+    if (answer === true && difficulty === 'medium') addScore(10 + 2 * 2);
+    if (answer === true && difficulty === 'hard') addScore(10 + 2 * 3);
   }
 
   incrementQuestionIndex() {
+    clearInterval(this.myInterval);
     const { index } = this.state;
     this.setState({ index: index + 1, click: false, timer: 30 });
     if (index === 3) this.setState({ renderLink: true });
