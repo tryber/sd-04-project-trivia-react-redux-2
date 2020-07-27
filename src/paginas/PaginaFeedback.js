@@ -6,14 +6,14 @@ import Botao from '../componentes/Botao';
 
 const userData = store.getState();
 const getPontos = () => {
-  let pontos = userData.userReducer.score;
+  const pontos = userData.userReducer.score;
   return pontos;
-}
+};
 
 const definirMsg = () => {
-  let msg = userData.userReducer.assertions >= 3 ? "Mandou bem!" : "Podia ser melhor...";
+  const msg = userData.userReducer.assertions >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
   return msg;
-}
+};
 
 const PaginaFeedback = () => (
   <div>
