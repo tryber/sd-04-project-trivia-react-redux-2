@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { MD5 } from 'crypto-js';
 import { savePlayerData } from '../redux/actions/userAction';
 import Input from '../componentes/Inicial/Input';
 import Botao from '../componentes/Botao';
@@ -20,7 +21,7 @@ class PaginaInicial extends Component {
   getData() {
     const { saveData } = this.props;
     const { nome, email } = this.state;
-    saveData(nome, email);
+    saveData(nome, MD5(email).toString());
   }
 
   changeHandler({ name, value }) {
