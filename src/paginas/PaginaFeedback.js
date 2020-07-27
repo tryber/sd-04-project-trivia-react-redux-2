@@ -7,10 +7,10 @@ const PaginaFeedback = () => (
   <div>
     <Perfil />
     <Link to="/">
-      <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
+      <Botao texto="Jogar Novamente" data-testid="btn-play-again" />
     </Link>
     <Link to="/ranking">
-      <Botao texto="Ver Ranking" dataTestId="ranking-title" />
+      <Botao texto="Ver Ranking" data-testid="ranking-title" />
     </Link>
   </div>
 );
