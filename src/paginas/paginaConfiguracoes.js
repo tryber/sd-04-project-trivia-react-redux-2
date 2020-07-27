@@ -2,7 +2,7 @@ import React from 'react';
 
 const PaginaConfiguracoes = () => (
   <div>
-    <h1>Configurações</h1>
+    <h1 date-testid="settings-title">Configurações</h1>
   </div>
 );
 
