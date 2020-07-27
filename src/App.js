@@ -4,6 +4,7 @@ import PaginaInicial from './paginas/PaginaInicial';
 import PaginaJogo from './paginas/PaginaJogo';
 import PaginaConfiguracoes from './paginas/PaginaConfiguracoes';
 import './App.css';
+import PaginaFeedback from './paginas/PaginaFeedback';
 
 export default function App() {
   return (
@@ -11,7 +12,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={PaginaInicial} />
         <Route exact path="/game" component={PaginaJogo} />
-        <Route exact path="/feedback" />
+        <Route exact path="/feedback" component={PaginaFeedback} />
         <Route exact path="/ranking" />
         <Route exact path="/settings" component={PaginaConfiguracoes} />
         <Route path="" />
