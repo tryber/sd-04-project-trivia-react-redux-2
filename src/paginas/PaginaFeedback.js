@@ -18,8 +18,9 @@ const definirMsg = () => {
 const PaginaFeedback = () => (
   <div>
     <Perfil />
-    <div>{definirMsg()}</div>
-    <div>{getPontos()}</div>
+    <div data-testid="feedback-text">{definirMsg()}</div>
+    <div data-testid="feedback-total-question">{userData.userReducer.assertions}</div>
+    <div data-testid="feedback-total-score>">{getPontos()}</div>
     <Link to="/">
       <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
     </Link>
