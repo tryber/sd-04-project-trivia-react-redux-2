@@ -5,12 +5,7 @@ import Botao from '../componentes/Botao';
 
 const PaginaFeedback = () => (
   <div>
-    <header>
-      <img src="" alt="" data-testid="header-profile-picture" />
-      <span data-testid="header-player-name"></span>
-      <span data-testid="header-score"></span>
-    </header>
-
+    <Perfil />
     <Link to="/">
       <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
     </Link>
