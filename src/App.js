@@ -1,16 +1,23 @@
 import React from 'react';
-import logo from './trivia.png';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import PaginaInicial from './paginas/PaginaInicial';
+import PaginaJogo from './paginas/PaginaJogo';
+import PaginaConfiguracoes from './paginas/PaginaConfiguracoes';
+import PaginaFeedback from './paginas/PaginaFeedback';
+import PaginaRanking from './paginas/PaginaRanking';
 import './App.css';
 
 export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          SUA VEZ
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={PaginaInicial} />
+        <Route exact path="/game" component={PaginaJogo} />
+        <Route exact path="/feedback" component={PaginaFeedback} />
+        <Route exact path="/ranking" component={PaginaRanking} />
+        <Route exact path="/settings" component={PaginaConfiguracoes} />
+        <Route path="" />
+      </Switch>
+    </BrowserRouter>
   );
 }

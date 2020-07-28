@@ -38,6 +38,12 @@ const FEEDBACK_TOTAL_SCORE_SELECTOR = '[data-testid="feedback-total-score"]';
 const FEEDBACK_TOTAL_QUESTION_SELECTOR = '[data-testid="feedback-total-question"]';
 const BUTTON_PLAY_AGAIN_SELECTOR = '[data-testid="btn-play-again"]';
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false
+})
+
 // game
 
 describe('O _header_ deve conter as informações da pessoa jogadora', () => {
