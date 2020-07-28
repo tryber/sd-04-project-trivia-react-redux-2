@@ -37,5 +37,5 @@ Respostas.propTypes = {
   onClick: PropTypes.func.isRequired,
   difficulty: PropTypes.string.isRequired,
 };
-
+// comentário
 export default Respostas;
