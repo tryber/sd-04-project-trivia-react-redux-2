@@ -6,10 +6,9 @@ import Perfil from '../componentes/Perfil';
 import Botao from '../componentes/Botao';
 
 const PaginaFeedback = ({ pontuacao, acertos }) => (
-  
   <div>
     <Perfil />
-    <div data-testid="feedback-text">{`${{acertos} >= 3 ? 'Mandou bem!' : 'Podia ser melhor...'}` }</div>
+    <div data-testid="feedback-text">{acertos >= 3 ? 'Mandou bem!' : 'Podia ser melhor...'}</div>
     <div data-testid="feedback-total-question">{acertos}</div>
     <div data-testid="feedback-total-score>">{pontuacao}</div>
     <Link to="/">

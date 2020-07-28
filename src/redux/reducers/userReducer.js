@@ -16,6 +16,7 @@ const playerReducer = (state = INITIAL_STATE, action) => {
         ...state,
         name: action.name,
         gravatarEmail: action.email,
+        score: 0,
       };
     case CORRECT_ANSWER:
       addInfo('state', {
