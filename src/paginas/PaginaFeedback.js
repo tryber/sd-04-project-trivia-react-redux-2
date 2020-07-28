@@ -1,26 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import store from '../redux/store';
 import Perfil from '../componentes/Perfil';
 import Botao from '../componentes/Botao';
 
-const userData = store.getState();
-const getPontos = () => {
-  const pontos = userData.userReducer.score;
-  return pontos;
-};
-
-const definirMsg = () => {
-  const msg = userData.userReducer.assertions >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
-  return msg;
-};
-
-const PaginaFeedback = () => (
+const PaginaFeedback = ({ pontuacao, acertos }) => (
+  
   <div>
     <Perfil />
-    <div data-testid="feedback-text">{definirMsg()}</div>
-    <div data-testid="feedback-total-question">{userData.userReducer.assertions}</div>
-    <div data-testid="feedback-total-score>">{getPontos()}</div>
+    <div data-testid="feedback-text">{`${{acertos} >= 3 ? 'Mandou bem!' : 'Podia ser melhor...'}` }</div>
+    <div data-testid="feedback-total-question">{acertos}</div>
+    <div data-testid="feedback-total-score>">{pontuacao}</div>
     <Link to="/">
       <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
     </Link>
@@ -30,5 +21,14 @@ const PaginaFeedback = () => (
   </div>
 );
 
-export default PaginaFeedback;
+PaginaFeedback.propTypes = {
+  pontuacao: PropTypes.number.isRequired,
+  acertos: PropTypes.number.isRequired,
+};
 
+const mapStateToProps = (state) => ({
+  pontuacao: state.userReducer.score,
+  acertos: state.userReducer.assertions,
+});
+
+export default connect(mapStateToProps)(PaginaFeedback);
