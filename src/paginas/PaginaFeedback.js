@@ -8,12 +8,12 @@ import Botao from '../componentes/Botao';
 const PaginaFeedback = ({ pontuacao, acertos }) => (
   <div>
     <Perfil />
-    <div data-testid="feedback-text">{acertos >= 3 ? 'Mandou bem!' : 'Podia ser melhor...'}</div>
-    <div data-testid="feedback-total-question">{acertos}</div>
-    <div data-testid="feedback-total-score">{pontuacao}</div>
+    <p data-testid="feedback-text">{acertos >= 3 ? 'Mandou bem!' : 'Podia ser melhor...'}</p>
+    <p data-testid="feedback-total-question">{acertos}</p>
+    <p data-testid="feedback-total-score">{pontuacao}</p>
     <Link to="/">
       <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
-    </Link> 
+    </Link>
     <Link to="/ranking">
       <Botao texto="Ver Ranking" dataTestId="btn-ranking" />
     </Link>
