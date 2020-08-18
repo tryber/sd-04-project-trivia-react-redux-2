@@ -6,7 +6,7 @@ import PaginaConfiguracoes from './paginas/PaginaConfiguracoes';
 import PaginaFeedback from './paginas/PaginaFeedback';
 import PaginaRanking from './paginas/PaginaRanking';
 import './App.css';
-
+// Criando branch de backup
 export default function App() {
   return (
     <BrowserRouter>
