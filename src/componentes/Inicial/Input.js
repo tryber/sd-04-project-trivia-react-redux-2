@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Input = ({ name, onChange, dataTestId }) => (
-  <div>
-    <label htmlFor={name}>
-      {`Insira seu ${name}:`}
-      <input
-        type="text"
-        data-testid={dataTestId}
-        onChange={(event) => onChange(event.target)}
-        name={name}
-      />
-    </label>
-  </div>
+  <input
+    className="form-control"
+    type="text"
+    data-testid={dataTestId}
+    onChange={(event) => onChange(event.target)}
+    name={name}
+    required
+    placeholder={`Insira seu ${name}`}
+  />
 );
 
 Input.propTypes = {

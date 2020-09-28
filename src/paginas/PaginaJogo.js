@@ -50,9 +50,9 @@ class PaginaJogo extends Component {
     const { addScore } = this.props;
     this.setState({ click: true });
     const { timer } = this.state;
-    if (answer === true && difficulty === 'easy') addScore(10 + (timer * 1));
-    if (answer === true && difficulty === 'medium') addScore(10 + (timer * 2));
-    if (answer === true && difficulty === 'hard') addScore(10 + (timer * 3));
+    if (answer === true && difficulty === 'easy') addScore(10 + timer * 1);
+    if (answer === true && difficulty === 'medium') addScore(10 + timer * 2);
+    if (answer === true && difficulty === 'hard') addScore(10 + timer * 3);
   }
 
   incrementQuestionIndex() {
@@ -68,18 +68,19 @@ class PaginaJogo extends Component {
     const { index, click, renderLink, timer } = this.state;
     if (!questions[index]) return <div>Loading...</div>;
     return (
-      <div>
+      <div className="container">
         <Perfil />
         <Pergunta currQuestion={questions[index]} />
         <Respostas
           correctAnswer={questions[index].correct_answer}
           incorrectAnswers={questions[index].incorrect_answers}
-          condition={click || !(timer !== 0)}
+          condition={click || (timer === 0)}
           onClick={this.clickouNoBotao}
           difficulty={questions[index].difficulty}
         />
         <Botao
-          show={click}
+          nameClass="btn btn-lg btn-success btn-block"
+          show={click || (timer === 0)}
           texto="PRÓXIMA"
           onClick={this.incrementQuestionIndex}
           dataTestId="btn-next"

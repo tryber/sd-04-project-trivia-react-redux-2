@@ -9,6 +9,7 @@ const Respostas = (props) => {
         type="button"
         data-testid="correct-answer"
         style={condition ? { border: '3px solid rgb(6, 240, 15)' } : null}
+        className="btn btn-lg btn-secondary btn-block"
         onClick={() => onClick(true, difficulty)}
         disabled={condition}
       >
@@ -19,6 +20,7 @@ const Respostas = (props) => {
           type="button"
           key={incorrectAnswer}
           data-testid={`wrong-answer-${index}`}
+          className="btn btn-lg btn-secondary btn-block"
           style={condition ? { border: '3px solid rgb(255, 0, 0)' } : null}
           onClick={() => onClick(false)}
           disabled={condition}
