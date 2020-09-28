@@ -6,16 +6,30 @@ import Perfil from '../componentes/Perfil';
 import Botao from '../componentes/Botao';
 
 const PaginaFeedback = ({ pontuacao, acertos }) => (
-  <div>
+  <div className="container">
     <Perfil />
-    <p data-testid="feedback-text">{acertos >= 3 ? 'Mandou bem!' : 'Podia ser melhor...'}</p>
-    <p data-testid="feedback-total-question">{acertos}</p>
-    <p data-testid="feedback-total-score">{pontuacao}</p>
-    <Link to="/">
-      <Botao texto="Jogar Novamente" dataTestId="btn-play-again" />
+    <p data-testid="feedback-text">{acertos >= 3 ? 'Mandou bem!' : 'Não desanime! Você vai melhorar!'}</p>
+    {acertos > 0 ? (
+      <p data-testid="feedback-total-question">{`Você acertou ${acertos} ${
+        acertos > 1 ? 'questões' : 'questão'
+      }.`}</p>
+    ) : (
+      <p data-testid="feedback-total-question">Você não acertou nenhuma questão.</p>
+    )}
+    <p data-testid="feedback-total-score">{`Você fez ${pontuacao} pontos.`}</p>
+    <Link to="/" className="text-link">
+      <Botao
+        texto="Jogar Novamente"
+        dataTestId="btn-play-again"
+        nameClass="btn btn-lg btn-success btn-block"
+      />
     </Link>
-    <Link to="/ranking">
-      <Botao texto="Ver Ranking" dataTestId="btn-ranking" />
+    <Link to="/ranking" className="text-link">
+      <Botao
+        texto="Ver Ranking"
+        dataTestId="btn-ranking"
+        nameClass="btn btn-lg btn-secondary btn-block"
+      />
     </Link>
   </div>
 );

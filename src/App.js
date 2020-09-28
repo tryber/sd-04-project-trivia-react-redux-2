@@ -10,14 +10,16 @@ import './App.css';
 export default function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={PaginaInicial} />
-        <Route exact path="/game" component={PaginaJogo} />
-        <Route exact path="/feedback" component={PaginaFeedback} />
-        <Route exact path="/ranking" component={PaginaRanking} />
-        <Route exact path="/settings" component={PaginaConfiguracoes} />
-        <Route path="" />
-      </Switch>
+      <div className="text-center">
+        <Switch>
+          <Route exact path="/" component={PaginaInicial} />
+          <Route exact path="/game" component={PaginaJogo} />
+          <Route exact path="/feedback" component={PaginaFeedback} />
+          <Route exact path="/ranking" component={PaginaRanking} />
+          <Route exact path="/settings" component={PaginaConfiguracoes} />
+          <Route path="" />
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

@@ -6,7 +6,7 @@ const Pergunta = (props) => {
   const { currQuestion } = props;
   const { category, question } = currQuestion;
   return (
-    <div>
+    <div className="container">
       <div data-testid="question-category">Categoria: {category}</div>
       <div data-testid="question-text">{question}</div>
     </div>

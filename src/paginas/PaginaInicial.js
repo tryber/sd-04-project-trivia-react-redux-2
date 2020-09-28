@@ -6,6 +6,8 @@ import { MD5 } from 'crypto-js';
 import { savePlayerData } from '../redux/actions/userAction';
 import Input from '../componentes/Inicial/Input';
 import Botao from '../componentes/Botao';
+import './login.css';
+import trybeLogo from '../assets/trybeLogo.png';
 
 class PaginaInicial extends Component {
   constructor(props) {
@@ -26,26 +28,39 @@ class PaginaInicial extends Component {
 
   changeHandler({ name, value }) {
     this.setState({ [name]: value });
-    console.log(this.state);
   }
 
   render() {
     const { nome, email } = this.state;
     return (
-      <div data-testid="">
-        <Input name="nome" onChange={this.changeHandler} dataTestId="input-player-name" />
-        <Input name="email" onChange={this.changeHandler} dataTestId="input-gravatar-email" />
-        <Link to="/game">
-          <Botao
-            texto="Jogar"
-            dataTestId="btn-play"
-            onClick={this.getData}
-            condition={!nome || !email}
-          />
-        </Link>
-        <Link to="/settings">
-          <Botao texto="Configuracoes" dataTestId="btn-settings" />
-        </Link>
+      <div className="container">
+        <form data-testid="" className="form-signin">
+          <img src={trybeLogo} className="mb-4" alt="Trybe logo" />
+          <h1 className="h3 mb-3 font-weight-normal">Faça seu login</h1>
+          <Input name="nome" onChange={this.changeHandler} dataTestId="input-player-name" />
+          <Input name="email" onChange={this.changeHandler} dataTestId="input-gravatar-email" />
+          <Link to="/game" className="text-link">
+            <Botao
+              nameClass="btn btn-lg btn-success btn-block"
+              texto="Jogar"
+              dataTestId="btn-play"
+              onClick={this.getData}
+              condition={!nome || !email}
+              type="submit"
+            />
+          </Link>
+          <Link to="/settings" className="text-link">
+            <Botao
+              texto="Configuracoes"
+              dataTestId="btn-settings"
+              nameClass="btn btn-lg btn-secondary btn-block"
+            />
+          </Link>
+          <p className="mt-5 mb-3 text-muted">
+            Desenvolvido por{' '}
+            <a href="https://www.linkedin.com/in/matheusysd/">Matheus Domingos</a>.
+          </p>
+        </form>
       </div>
     );
   }
